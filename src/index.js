@@ -1,6 +1,27 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import { registerImage } from "./lazy";
+const btnGetImage = document.getElementById("btnGetImages");
+const mountNode = document.querySelector(".images");
+const minimun = 1;
+const maximun = 121;
 
-console.log('Happy hacking :)')
+const random = () => Math.floor(Math.random() * (maximun - minimun) + minimun);
+
+function createImages() {
+  let container = document.createElement("div");
+  let img = document.createElement("img");
+  container.className = "p-4";
+  img.className = "mx-auto";
+  img.width = "320";
+  img.dataset.src = `https://randomfox.ca/images/${random()}.jpg`;
+  container.append(img);
+  return container;
+}
+// const newImage = createImages();
+
+const addImage = () => {
+  const newImage = createImages();
+  mountNode.append(newImage);
+  registerImage(newImage);
+};
+
+btnGetImage.addEventListener("click", addImage);
