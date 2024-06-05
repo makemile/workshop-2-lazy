@@ -4,7 +4,6 @@ const isIntersecting = (entry) => {
 
 const loadingImage = (entry) => {
   const container = entry.target;
-  console.log(container, "ii");
   const imagen = container.firstChild;
   const url = imagen.dataset.src;
   imagen.src = url;
